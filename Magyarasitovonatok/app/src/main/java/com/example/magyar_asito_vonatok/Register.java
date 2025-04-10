@@ -1,19 +1,29 @@
 package com.example.magyar_asito_vonatok;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Register extends AppCompatActivity {
-    public static final String TAG = MainActivity.class.getName();
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
+public class Register extends AppCompatActivity {
+
+    public static final String TAG = MainActivity.class.getName();
+    private static final int SECRET_KEY = 333;
+    private FirebaseAuth mAuth;
     EditText usernameET;
     EditText fullnameET;
     EditText emailET;
@@ -23,12 +33,14 @@ public class Register extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
         Log.i(TAG, "onCreate");
+        mAuth = FirebaseAuth.getInstance();
 
         Bundle bundle = getIntent().getExtras();
         int secret_key = getIntent().getIntExtra("SECRET_KEY", 0);
@@ -66,9 +78,25 @@ public class Register extends AppCompatActivity {
             Log.i(TAG, "Nem egyezik a jelszó");
         }else {
             Log.i(TAG, "username: "+username+" email: "+ email + " date: "+ date);
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        Log.d(TAG, "felhasználó létrehozva");
+                        startApp();
+                    }else {
+                        Log.d(TAG, "Nem sikeres a reg");
+                        Toast.makeText(Register.this, "Nem sikerült a regisztráció " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
         }
 
-        //TODO
+
+    }
+    private void startApp(){
+        Intent intent = new Intent(this, Fooldal.class);
+        startActivity(intent);
     }
     @Override
     protected void onDestroy() {
