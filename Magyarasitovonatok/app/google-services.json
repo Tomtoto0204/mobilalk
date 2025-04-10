@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "495675567223",
+    "project_id": "magyarasitovonatok",
+    "storage_bucket": "magyarasitovonatok.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495675567223:android:64173a4c9ab6299671ea72",
+        "android_client_info": {
+          "package_name": "com.example.magyar_asito_vonatok"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALi91LaKZORpJ9LYmhUW3UIwFeSR2jeZw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
