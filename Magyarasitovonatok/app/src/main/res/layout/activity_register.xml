@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_light"
-    tools:context=".register">
+    tools:context=".Register">
 
     <TextView
         android:id="@+id/registerText"
@@ -21,21 +21,6 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <EditText
-        android:id="@+id/felhasznalonevEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/felhasznalonev"
-        android:inputType="text"
-
-        android:minHeight="48dp"
-        android:textColorHint="#37474F"
-        app:layout_constraintBottom_toTopOf="@+id/fullnameEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerText" />
 
     <EditText
         android:id="@+id/fullnameEditText"
@@ -50,7 +35,7 @@
         app:layout_constraintBottom_toTopOf="@+id/emailEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/felhasznalonevEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/registerText" />
 
 
     <EditText

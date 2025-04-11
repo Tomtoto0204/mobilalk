@@ -1,10 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    style="?android:attr/buttonBarStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/blue_light"
+
+
     tools:context=".Fooldal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_marginTop="100dp"
+        android:id="@+id/jegyfoglalasTitleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="@string/jegyfoglalas"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="28sp" />
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/honnan"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            />
+
+        <Spinner
+            android:id="@+id/honnanSpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:minHeight="48dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/hova"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            />
+
+        <Spinner
+            android:id="@+id/hovaSpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:minHeight="48dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/jegyfoglalasButton"
+            android:layout_width="25pt"
+            android:layout_height="wrap_content"
+            android:layout_margin="5pt"
+            android:layout_weight="1"
+            android:text="@string/jegyfoglalas"
+            android:textColor="@color/white"
+            tools:ignore="VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/meglevojegyekButton"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5pt"
+            android:layout_weight="1"
+            android:text="@string/meglevojegyek"
+            android:textColor="@color/white"
+            tools:ignore="VisualLintButtonSize" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

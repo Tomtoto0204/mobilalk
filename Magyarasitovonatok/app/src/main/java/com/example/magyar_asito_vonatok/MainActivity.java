@@ -5,18 +5,27 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getName();
     private static final int SECRET_KEY = 333;
 
-    EditText userName;
+    private FirebaseAuth mAuth;
+
+    EditText email;
     EditText password;
 
     @Override
@@ -26,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Log.i(TAG, "onCreate");
+        mAuth = FirebaseAuth.getInstance();
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -36,12 +46,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        EditText userName = findViewById(R.id.felhasznalonevEditText);
-        EditText password = findViewById(R.id.jelszoEditText);
+        email = findViewById(R.id.emailcimEditText);
+        password = findViewById(R.id.jelszoEditText);
 
         String jelszo = password.getText().toString();
-        String felhnev = userName.getText().toString();
-        Log.i(TAG, "Bejelentkezett: " + felhnev + " Jelszó: " + jelszo);
+        String emailcim = email.getText().toString();
+        Log.i(TAG, "Bejelentkezett: " + email + " Jelszó: " + jelszo);
+        mAuth.signInWithEmailAndPassword(emailcim, jelszo).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Log.d(TAG, "felhasználó létrehozva");
+                    startApp();
+                }else {
+                    Log.d(TAG, "Nem sikeres a login");
+                    Toast.makeText(MainActivity.this, "Nem sikerült a bejelentkezés " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
+
+    private void startApp() {
+        Intent intent = new Intent(this, Fooldal.class);
+        startActivity(intent);
     }
 
     public void register(View view) {

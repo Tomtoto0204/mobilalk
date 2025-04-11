@@ -24,7 +24,6 @@ public class Register extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getName();
     private static final int SECRET_KEY = 333;
     private FirebaseAuth mAuth;
-    EditText usernameET;
     EditText fullnameET;
     EditText emailET;
     EditText passwordET;
@@ -48,7 +47,6 @@ public class Register extends AppCompatActivity {
         if (secret_key != 333){
             finish();
         }
-        usernameET = findViewById(R.id.felhasznalonevEditText);
         fullnameET = findViewById(R.id.fullnameEditText);
         emailET = findViewById(R.id.emailEditText);
         passwordET = findViewById(R.id.jelszoEditText);
@@ -67,7 +65,6 @@ public class Register extends AppCompatActivity {
     }
 
     public void reg(View view) {
-        String username =  usernameET.getText().toString();
         String fullname =  fullnameET.getText().toString();
         String email =  emailET.getText().toString();
         String password =  passwordET.getText().toString();
@@ -77,7 +74,7 @@ public class Register extends AppCompatActivity {
         if (!password.equals(password2)){
             Log.i(TAG, "Nem egyezik a jelszó");
         }else {
-            Log.i(TAG, "username: "+username+" email: "+ email + " date: "+ date);
+            Log.i(TAG, "email: "+ email + " date: "+ date);
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -94,7 +91,7 @@ public class Register extends AppCompatActivity {
 
 
     }
-    private void startApp(){
+     void startApp(){
         Intent intent = new Intent(this, Fooldal.class);
         startActivity(intent);
     }

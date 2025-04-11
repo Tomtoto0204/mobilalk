@@ -10,4 +10,10 @@
     <string name="teljes_nev">Teljes név</string>
     <string name="jelszo_megegyszer">Jelszó mégegyszer</string>
     <string name="szuletesi_datum">Születési dátum:</string>
+    <string name="jegyfoglalas">Jegyfoglalás</string>
+    <string name="honnan">Honnan?</string>
+    <string name="meglevojegyek">Meglévő jegyek</string>
+    <string name="hova">Hova?</string>
+    <string name="mikor">Mikor?\n</string>
+    <string name="vissza">Vissza\n</string>
 </resources>
