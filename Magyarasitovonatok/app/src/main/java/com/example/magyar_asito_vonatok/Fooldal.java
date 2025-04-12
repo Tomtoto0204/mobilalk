@@ -50,7 +50,7 @@ public class Fooldal extends AppCompatActivity {
                         Animation.RELATIVE_TO_PARENT, 1.0f,
                         Animation.ABSOLUTE, 0f,
                         Animation.ABSOLUTE, 0f);
-                animation.setDuration(2000);
+                animation.setDuration(3500);
                 animation.setFillAfter(true);
 
                 vonatImage.startAnimation(animation);
