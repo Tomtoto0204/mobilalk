@@ -16,4 +16,6 @@
     <string name="hova">Hova?</string>
     <string name="mikor">Mikor?\n</string>
     <string name="vissza">Vissza\n</string>
+    <string name="ar">0 ft</string>
+    <string name="valassz_datumot">Válassz dátumot\n</string>
 </resources>

@@ -1,7 +1,9 @@
 package com.example.magyar_asito_vonatok;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +23,9 @@ public class meglevoJegyek extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_meglevo_jegyek);
+
+        Button visszaButton = findViewById(R.id.visszaButton);
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null){
             Log.d(TAG, "Van ilyen felhasználó móni");
@@ -28,5 +33,9 @@ public class meglevoJegyek extends AppCompatActivity {
             Log.d(TAG, "Nincs ilyen felhasználó móni");
             finish();
         }
+        visszaButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, Fooldal.class);
+            startActivity(intent);
+        });
     }
 }
