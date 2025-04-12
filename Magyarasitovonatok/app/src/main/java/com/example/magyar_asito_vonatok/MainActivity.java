@@ -48,10 +48,18 @@ public class MainActivity extends AppCompatActivity {
     public void login(View view) {
         email = findViewById(R.id.emailcimEditText);
         password = findViewById(R.id.jelszoEditText);
+        if (email == null || password == null) {
+            Log.e(TAG, "Az email vagy jelszó mező nem található! Ellenőrizd az id-kat az XML-ben.");
+            return;
+        }
 
         String jelszo = password.getText().toString();
         String emailcim = email.getText().toString();
         Log.i(TAG, "Bejelentkezett: " + email + " Jelszó: " + jelszo);
+        if (emailcim.isEmpty() || jelszo.isEmpty()) {
+            Toast.makeText(this, "Kérlek add meg az email címet és a jelszót!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         mAuth.signInWithEmailAndPassword(emailcim, jelszo).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

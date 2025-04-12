@@ -71,6 +71,11 @@ public class Register extends AppCompatActivity {
         String password2 =  password2ET.getText().toString();
         String date =  dateET.getText().toString();
 
+        if (email.isEmpty() || password.isEmpty() || password2.isEmpty() || fullname.isEmpty() || date.isEmpty()) {
+            Toast.makeText(this, "Kérlek tölts ki minden mezőt!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (!password.equals(password2)){
             Log.i(TAG, "Nem egyezik a jelszó");
         }else {
